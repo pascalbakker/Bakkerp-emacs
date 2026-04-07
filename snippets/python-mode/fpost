@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: POST Endpoint
+# uuid: 
+# key: fpost
+# condition: t
+# --
+@app.post("/${1:resources}/", response_model=${2:SchemaRead})
+async def create_${3:resource}(
+    payload: ${4:SchemaCreate}, 
+    db: AsyncSession = Depends(get_db)
+):
+    """Create a new ${3:resource}."""
+    db_obj = models.${5:ModelName}(**payload.model_dump())
+    db.add(db_obj)
+    await db.commit()
+    await db.refresh(db_obj)
+    return db_obj

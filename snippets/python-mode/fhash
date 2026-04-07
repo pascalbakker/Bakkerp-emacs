@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: Request Hash
+# uuid: 
+# key: fhash
+# condition: t
+# --
+def generate_secure_hash(data: dict[str, Any], salt: str = "${1:secret_salt}") -> str:
+    """
+    Generates a deterministic SHA256 hash from a dictionary for API keys/IDs.
+    """
+    import hashlib
+    import json
+
+    # Sort keys and remove whitespace for determinism across environments
+    json_data = json.dumps(data, sort_keys=True, separators=(",", ":"))
+    combined = f"{json_data}{salt}".encode("utf-8")
+    
+    return hashlib.sha256(combined).hexdigest()
+$0

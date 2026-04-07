@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: GET list Endpoint
+# uuid: 
+# key: fgetl
+# condition: t
+# --
+@app.get("/${1:resources}/", response_model=list[${2:SchemaRead}])
+async def list_${3:resources}(
+    limit: int = 10, 
+    offset: int = 0, 
+    db: AsyncSession = Depends(get_db)
+):
+    """List ${3:resources} with pagination."""
+    query = select(models.${4:ModelName}).offset(offset).limit(limit)
+    result = await db.execute(query)
+    return result.scalars().all()

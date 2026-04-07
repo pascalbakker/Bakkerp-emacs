@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Generates a salt hash
+# uuid: 
+# key: salthash
+# condition: t
+# --
+API_SALT_HASH=`(shell-command-to-string "openssl rand -hex 32 | tr -d '\n'")`
+$0

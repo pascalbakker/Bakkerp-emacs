@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: FastAPU Service CRUD Function
+# uuid: 
+# key: fserv
+# condition: t
+# --
+async def create_${1:entity}(db: AsyncSession, obj_in: schemas.${2:CreateSchema}) -> models.${3:Model}:
+    """
+    Create a new ${1:entity} record.
+    """
+    db_obj = models.${3:Model}(**obj_in.model_dump()$0)
+    
+    db.add(db_obj)
+    await db.commit()
+    await db.refresh(db_obj)
+    return db_obj

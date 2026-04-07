@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: SQLAlchemy One-to-Many (List)
+# uuid: 
+# key: sqlrelmany
+# condition: t
+# --
+${1:children}: Mapped[List["${2:ChildClass}"]] = relationship(back_populates="${3:parent_field}")

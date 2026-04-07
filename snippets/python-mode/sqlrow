@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: SQLAlchemy Column
+# uuid: 
+# key: sqlcol
+# condition: t
+# --
+${1:name}: Mapped[${2:int}] = mapped_column($0)

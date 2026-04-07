@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: SQLAlchemy Model
+# key: sqlmodel
+# condition: t
+# --
+class ${1:ModelName}(Base):
+    __tablename__ = "${2:table_name}"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    $0

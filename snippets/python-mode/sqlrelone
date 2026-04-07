@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: SQLAlchemy Many-to-One (Single)
+# uuid: 
+# key: sqlrelone
+# condition: t
+# --
+${1:parent}: Mapped["${2:ParentClass}"] = relationship(back_populates="${3:child_field}")
