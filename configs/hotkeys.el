@@ -36,7 +36,8 @@
 (global-set-key (kbd "C-c C-r") #'run-scripts)
 
 ;; Opens file in dired with default app
-(local-set-key (kbd "o") #'my/dired-open-file)
+(map! :map dired-mode-map
+      :n "o" #'my/dired-open-file)
 
 ;; Compiles Guile project
 (map! :leader "c z" #'compile-guile)
